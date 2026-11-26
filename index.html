@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Divakar DR — Computer Science and Cyber Security student, aspiring full-stack developer." />
+  <meta name="theme-color" content="#080d19" />
+  <title>Divakar DR | Developer Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #080d19;
+      --surface: #101a2b;
+      --surface2: #142238;
+      --text: #edf4ff;
+      --muted: #9aabc4;
+      --accent: #63a7ff;
+      --accent2: #8b7cff;
+      --line: rgba(164, 190, 225, .14);
+      --shadow: 0 20px 60px rgba(0, 0, 0, .22);
+      --nav: rgba(8, 13, 25, .78);
+    }
+
+    [data-theme="light"] {
+      --bg: #f5f8fd;
+      --surface: #ffffff;
+      --surface2: #edf3fb;
+      --text: #142039;
+      --muted: #60708b;
+      --accent: #1769d2;
+      --accent2: #6553d9;
+      --line: rgba(34, 61, 101, .14);
+      --shadow: 0 20px 60px rgba(37, 61, 97, .09);
+      --nav: rgba(245, 248, 253, .84);
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.65;
+      transition: background .3s, color .3s
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none
+    }
+
+    button {
+      font: inherit
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 42px));
+      margin: auto
+    }
+
+    .nav {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 20;
+      background: var(--nav);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line)
+    }
+
+    .nav-inner {
+      height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px
+    }
+
+    .brand {
+      font: 700 1.12rem "Space Grotesk";
+      letter-spacing: -.04em
+    }
+
+    .brand span {
+      color: var(--accent)
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      color: var(--muted);
+      font-size: .91rem
+    }
+
+    .nav-links a:hover {
+      color: var(--accent)
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px
+    }
+
+    .theme-btn,
+    .menu-btn {
+      border: 1px solid var(--line);
+      background: var(--surface);
+      color: var(--text);
+      border-radius: 12px;
+      padding: 9px 12px;
+      cursor: pointer
+    }
+
+    .menu-btn {
+      display: none
+    }
+
+    .hero {
+      min-height: 760px;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      align-items: center;
+      gap: 60px;
+      padding: 145px 0 90px;
+      position: relative
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--accent);
+      font-size: .83rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #47d7a0;
+      box-shadow: 0 0 0 5px rgba(71, 215, 160, .12)
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: "Space Grotesk", sans-serif;
+      line-height: 1.12;
+      letter-spacing: -.045em
+    }
+
+    h1 {
+      font-size: clamp(3rem, 6vw, 5.4rem);
+      margin: 22px 0 20px
+    }
+
+    h1 .gradient {
+      background: linear-gradient(100deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent
+    }
+
+    .hero p {
+      font-size: 1.12rem;
+      color: var(--muted);
+      max-width: 650px;
+      margin: 0 0 30px
+    }
+
+    .buttons {
+      display: flex;
+      gap: 13px;
+      flex-wrap: wrap
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 13px 19px;
+      border-radius: 13px;
+      font-weight: 700;
+      border: 1px solid var(--line);
+      transition: transform .2s, box-shadow .2s
+    }
+
+    .btn:hover {
+      transform: translateY(-3px)
+    }
+
+    .primary {
+      background: linear-gradient(110deg, var(--accent), var(--accent2));
+      color: white;
+      border: 0;
+      box-shadow: 0 10px 30px rgba(75, 133, 231, .22)
+    }
+
+    .secondary {
+      background: var(--surface);
+      color: var(--text)
+    }
+
+    .socials {
+      display: flex;
+      gap: 18px;
+      margin-top: 27px;
+      color: var(--muted);
+      font-size: .92rem
+    }
+
+    .socials a:hover {
+      color: var(--accent)
+    }
+
+    .photo-wrap {
+      justify-self: center;
+      position: relative;
+      width: min(340px, 80vw);
+      aspect-ratio: 1;
+      border-radius: 34px;
+      padding: 12px;
+      background: linear-gradient(140deg, var(--accent), var(--accent2));
+      box-shadow: 0 30px 90px rgba(60, 116, 214, .22);
+      transform: rotate(2deg)
+    }
+
+    .photo-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 26px;
+      background: var(--surface);
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      transform: rotate(-2deg);
+      border: 1px solid rgba(255, 255, 255, .15)
+    }
+
+    .photo-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: none
+    }
+
+    .photo-placeholder {
+      text-align: center;
+      padding: 25px;
+      color: var(--muted)
+    }
+
+    .avatar {
+      width: 112px;
+      height: 112px;
+      margin: 0 auto 16px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: white;
+      font: 700 2.3rem "Space Grotesk"
+    }
+
+    .photo-placeholder small {
+      display: block;
+      margin-top: 7px;
+      font-size: .78rem
+    }
+
+    .float-card {
+      position: absolute;
+      bottom: 22px;
+      left: -45px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      padding: 13px 17px;
+      border-radius: 15px;
+      box-shadow: var(--shadow);
+      transform: rotate(-2deg);
+      font-size: .85rem
+    }
+
+    .float-card strong {
+      display: block;
+      font-family: "Space Grotesk";
+      font-size: 1rem
+    }
+
+    section {
+      padding: 92px 0
+    }
+
+    .section-head {
+      max-width: 680px;
+      margin-bottom: 38px
+    }
+
+    .kicker {
+      color: var(--accent);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase
+    }
+
+    h2 {
+      font-size: clamp(2.1rem, 4vw, 3.1rem);
+      margin: 10px 0 13px
+    }
+
+    .section-head p,
+    .muted {
+      color: var(--muted)
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 25px
+    }
+
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 28px;
+      box-shadow: var(--shadow)
+    }
+
+    .about-copy p {
+      color: var(--muted);
+      margin-top: 0
+    }
+
+    .facts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 13px
+    }
+
+    .fact {
+      background: var(--surface2);
+      border-radius: 15px;
+      padding: 17px
+    }
+
+    .fact small {
+      display: block;
+      color: var(--muted);
+      margin-bottom: 5px
+    }
+
+    .fact strong {
+      font-size: .95rem
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px
+    }
+
+    .skill-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 22px;
+      transition: transform .25s, border-color .25s
+    }
+
+    .skill-card:hover,
+    .project:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent)
+    }
+
+    .skill-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: var(--surface2);
+      display: grid;
+      place-items: center;
+      color: var(--accent);
+      font-weight: 800;
+      margin-bottom: 15px
+    }
+
+    .skill-card h3 {
+      font-size: 1.08rem;
+      margin: 0 0 7px
+    }
+
+    .skill-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .9rem
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px
+    }
+
+    .project {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 25px;
+      transition: transform .25s, border-color .25s;
+      display: flex;
+      flex-direction: column
+    }
+
+    .project-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 17px
+    }
+
+    .project-number {
+      font: 700 .85rem "Space Grotesk";
+      color: var(--accent)
+    }
+
+    .project h3 {
+      font-size: 1.35rem;
+      margin: 0 0 10px
+    }
+
+    .project p {
+      color: var(--muted);
+      font-size: .94rem;
+      margin: 0 0 18px;
+      flex: 1
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px
+    }
+
+    .tag {
+      font-size: .75rem;
+      color: var(--accent);
+      background: rgba(99, 167, 255, .1);
+      padding: 5px 9px;
+      border-radius: 8px
+    }
+
+    .project-note {
+      font-size: .78rem;
+      color: var(--muted);
+      margin-top: 16px
+    }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px
+    }
+
+    .timeline-item {
+      border-left: 2px solid var(--accent);
+      padding: 2px 0 5px 20px
+    }
+
+    .timeline-item h3 {
+      font-size: 1.12rem;
+      margin: 0 0 6px
+    }
+
+    .timeline-item p {
+      color: var(--muted);
+      margin: 0;
+      font-size: .92rem
+    }
+
+    .edu {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start
+    }
+
+    .edu-mark {
+      flex: 0 0 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: var(--surface2);
+      display: grid;
+      place-items: center;
+      color: var(--accent);
+      font-weight: 800
+    }
+
+    .edu h3 {
+      font-size: 1.15rem;
+      margin: 0 0 7px
+    }
+
+    .edu p {
+      margin: 0;
+      color: var(--muted)
+    }
+
+    .contact-box {
+      background: linear-gradient(120deg, rgba(99, 167, 255, .14), rgba(139, 124, 255, .13)), var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      padding: 42px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px
+    }
+
+    .contact-box h2 {
+      margin-top: 0
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      max-width: 560px
+    }
+
+    footer {
+      padding: 28px 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .86rem
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .7s ease, transform .7s ease
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0)
+    }
+
+    @media(max-width:850px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 55px;
+        text-align: center;
+        padding-top: 130px
+      }
+
+      .hero p {
+        margin-left: auto;
+        margin-right: auto
+      }
+
+      .buttons,
+      .socials {
+        justify-content: center
+      }
+
+      .photo-wrap {
+        width: 270px
+      }
+
+      .float-card {
+        left: -28px
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+    }
+
+    @media(max-width:650px) {
+      .wrap {
+        width: min(100% - 30px, 1120px)
+      }
+
+      .nav-inner {
+        height: 66px
+      }
+
+      .menu-btn {
+        display: block
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 66px;
+        left: 0;
+        right: 0;
+        padding: 18px 22px 22px;
+        background: var(--surface);
+        border-bottom: 1px solid var(--line);
+        flex-direction: column;
+        align-items: flex-start
+      }
+
+      .nav-links.open {
+        display: flex
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 125px 0 70px
+      }
+
+      section {
+        padding: 70px 0
+      }
+
+      .skills-grid,
+      .projects,
+      .experience-grid {
+        grid-template-columns: 1fr
+      }
+
+      .facts {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .contact-box {
+        padding: 28px;
+        display: block
+      }
+
+      .contact-box .btn {
+        margin-top: 10px
+      }
+
+      .float-card {
+        left: -12px;
+        bottom: 12px
+      }
+
+      .photo-wrap {
+        width: 245px
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#home">DIVAKAR<span>.</span></a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a
+          href="#experience">Experience</a><a href="#contact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="theme-btn" id="themeToggle" aria-label="Toggle color theme">☀️ / 🌙</button>
+        <button class="menu-btn" id="menuToggle" aria-label="Open navigation">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="wrap hero" id="home">
+      <div class="hero-copy reveal">
+        <div class="eyebrow"><span class="dot"></span> Open to internship opportunities</div>
+        <h1>Hi, I'm <span class="gradient">Divakar DR.</span><br>Developer in progress.</h1>
+        <p>I'm a Computer Science and Cyber Security student who enjoys building useful web applications, solving
+          problems, and exploring secure software development.</p>
+        <div class="buttons">
+          <a class="btn primary" href="#projects">Explore my work <span>↗</span></a>
+          <a class="btn secondary" href="mailto:divakardrdiva@gmail.com">Contact me</a>
+        </div>
+        <div class="socials">
+          <a href="https://github.com/divakardr" target="_blank" rel="noopener">GitHub ↗</a>
+          <a href="https://www.linkedin.com/in/divakar-d-r-601344299/" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a href="mailto:divakardrdiva@gmail.com">Email ↗</a>
+        </div>
+      </div>
+      <div class="photo-wrap reveal">
+        <div class="photo-inner">
+          <img id="profilePhoto" src="assets/profile.jpg" alt="Portrait of Divakar DR" />
+          <div class="photo-placeholder" id="photoPlaceholder">
+            <div class="avatar">DD</div>
+            <strong>Your profile photo</strong>
+            <small>Add your picture as <b>assets/profile.jpg</b></small>
+          </div>
+        </div>
+        <div class="float-card"><strong>Building. Learning. Securing.</strong><span class="muted">One project at a
+            time.</span></div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="kicker">A little about me</div>
+          <h2>Curious mind. Practical builder.</h2>
+          <p>I like turning ideas into working products and learning how technology can solve everyday problems.</p>
+        </div>
+        <div class="about-grid">
+          <div class="panel about-copy reveal">
+            <p>I'm pursuing a B.E. in Computer Science and Engineering (Cyber Security). My interests include full-stack
+              development, software engineering, networking, and system security.</p>
+            <p>I have worked on academic and personal project ideas involving student workflows, management platforms,
+              and cybersecurity. I enjoy learning by building, testing, and improving real applications.</p>
+            <p>I'm currently strengthening my skills in JavaScript, React, Node.js, databases, and core programming.</p>
+          </div>
+          <div class="panel facts reveal">
+            <div class="fact"><small>Education</small><strong>B.E. CSE (Cyber Security)</strong></div>
+            <div class="fact"><small>Graduation</small><strong>2027</strong></div>
+            <div class="fact"><small>Focus</small><strong>Full-stack development</strong></div>
+            <div class="fact"><small>Interests</small><strong>Software Engineer & Business Executive</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="kicker">What I work with</div>
+          <h2>Skills & technologies</h2>
+          <p>A growing toolkit across programming, web development, databases, and cybersecurity.</p>
+        </div>
+        <div class="skills-grid">
+          <article class="skill-card reveal">
+            <div class="skill-icon">C</div>
+            <h3>Programming</h3>
+            <p>C, Java, Python fundamentals</p>
+          </article>
+          <article class="skill-card reveal">
+            <div class="skill-icon">JS</div>
+            <h3>Frontend</h3>
+            <p>HTML, CSS, JavaScript, React</p>
+          </article>
+          <article class="skill-card reveal">
+            <div class="skill-icon">N</div>
+            <h3>Backend</h3>
+            <p>Node.js, Express.js, REST API fundamentals</p>
+          </article>
+          <article class="skill-card reveal">
+            <div class="skill-icon">DB</div>
+            <h3>Databases</h3>
+            <p>MySQL, SQL, database design fundamentals</p>
+          </article>
+          <article class="skill-card reveal">
+            <div class="skill-icon">SEC</div>
+            <h3>Cyber Security</h3>
+            <p>System security, networking, security concepts</p>
+          </article>
+          <article class="skill-card reveal">
+            <div class="skill-icon">TOOLS</div>
+            <h3>Developer tools</h3>
+            <p>Git, GitHub, VS Code, IntelliJ IDEA</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="kicker">Selected work</div>
+          <h2>Projects I'm building</h2>
+          <p>A selection of project work and concepts across full-stack development and cybersecurity.</p>
+        </div>
+        <div class="projects">
+          <article class="project reveal">
+            <div class="project-top"><span class="project-number">01 / WEB APP</span><span>↗</span></div>
+            <h3>College Leave Management Portal</h3>
+            <p>A role-based student leave workflow designed to manage applications and approvals across students, class
+              advisors, HODs, and administrators.</p>
+            <div class="tags"><span class="tag">Node.js</span><span class="tag">JavaScript</span><span
+                class="tag">MySQL</span><span class="tag">HTML/CSS</span></div>
+            <div class="project-note">Academic / personal project · Add repository link when ready</div>
+          </article>
+          <article class="project reveal">
+            <div class="project-top"><span class="project-number">02 / PLATFORM</span><span>↗</span></div>
+            <h3>CaterConnect</h3>
+            <p>A catering management platform concept covering crew registration, catering availability, booking
+              workflows, and payment integration.</p>
+            <div class="tags"><span class="tag">Web development</span><span class="tag">Node.js</span><span
+                class="tag">Database</span><span class="tag">Payments</span></div>
+            <div class="project-note">Project in development · Add repository link when ready</div>
+          </article>
+          <article class="project reveal">
+            <div class="project-top"><span class="project-number">03 / CYBERSECURITY</span><span>↗</span></div>
+            <h3>Honey-Token Document Tracker</h3>
+            <p>A cybersecurity project concept using decoy documents and tracking events to help demonstrate document
+              access monitoring and threat awareness.</p>
+            <div class="tags"><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">Cyber
+                Security</span></div>
+            <div class="project-note">Project work · Add repository link when ready</div>
+          </article>
+          <article class="project reveal">
+            <div class="project-top"><span class="project-number">04 / WEB APP</span><span>↗</span></div>
+            <h3>College Lost & Found Portal</h3>
+            <p>A planned campus platform for reporting lost and found items, with ideas for matching, ownership
+              verification, and notifications.</p>
+            <div class="tags"><span class="tag">React</span><span class="tag">Node.js</span><span
+                class="tag">Express</span><span class="tag">MySQL</span></div>
+            <div class="project-note">Planned project · Features may be under development</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="kicker">My journey</div>
+          <h2>Education & experience</h2>
+          <p>Learning through coursework, internships, and hands-on project development.</p>
+        </div>
+        <div class="experience-grid">
+          <div class="panel reveal">
+            <div class="edu">
+              <div class="edu-mark">🎓</div>
+              <div>
+                <h3>Sri Venkateswaraa College of Technology</h3>
+                <p>B.E. Computer Science and Engineering (Cyber Security)</p>
+                <p>2023 – 2027</p>
+              </div>
+            </div>
+          </div>
+          <div class="panel reveal">
+            <div class="timeline-item">
+              <h3>Internship & project learning</h3>
+              <p>Exposure to web development and data-science project work through internship activities and practical
+                assignments. Add company names, dates, and verified outcomes before publishing.</p>
+            </div>
+          </div>
+          <div class="panel reveal">
+            <div class="timeline-item">
+              <h3>Full-stack development</h3>
+              <p>Building practical applications and strengthening frontend, backend, API, and database skills.</p>
+            </div>
+          </div>
+          <div class="panel reveal">
+            <div class="timeline-item">
+              <h3>Cybersecurity exploration</h3>
+              <p>Exploring system security, networking, monitoring, and secure application development through project
+                ideas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="contact-box reveal">
+          <div>
+            <div class="kicker">Let's connect</div>
+            <h2>Have an opportunity or an idea?</h2>
+            <p>I'm interested in internship opportunities and opportunities to learn, contribute, and build useful
+              software. Feel free to reach out.</p>
+            <div class="muted">divakardrdiva@gmail.com</div>
+          </div>
+          <a class="btn primary" href="mailto:divakardrdiva@gmail.com">Say hello ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="wrap footer-inner"><span>© <span id="year"></span> Divakar DR. Built with curiosity.</span><span><a
+          href="https://github.com/divakardr" target="_blank" rel="noopener">GitHub</a> · <a
+          href="https://www.linkedin.com/in/divakar-d-r-601344299/" target="_blank" rel="noopener">LinkedIn</a></span>
+    </div>
+  </footer>
+
+  <script>
+    const root = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('portfolio-theme');
+    if (savedTheme) root.setAttribute('data-theme', savedTheme);
+    themeToggle.addEventListener('click', () => {
+      const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem('portfolio-theme', next);
+    });
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+    document.getElementById('year').textContent = '2027';
+    const photo = document.getElementById('profilePhoto');
+    photo.addEventListener('load', () => { photo.style.display = 'block'; document.getElementById('photoPlaceholder').style.display = 'none'; });
+    photo.addEventListener('error', () => { photo.style.display = 'none'; });
+    if (photo.complete && photo.naturalWidth > 0) { photo.style.display = 'block'; document.getElementById('photoPlaceholder').style.display = 'none'; }
+    const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    }), { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+
+</html>
